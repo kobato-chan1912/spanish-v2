@@ -228,7 +228,7 @@
                     createSlug();
 
                     // Auto Generate Title and Content
-                    let urlReq = "{{env("APP_URL")}}" + "/api/random-song";
+                    let urlReq = "/api/random-song";
                     $.ajax(urlReq,   // request url
                         {
                             success: function (data, status, xhr) {// success callback function
