@@ -214,7 +214,7 @@
 
         $.ajax({
             type:'POST',
-            url:"{{route("checkSong_API")}}",
+            url:"/api/check-song",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
