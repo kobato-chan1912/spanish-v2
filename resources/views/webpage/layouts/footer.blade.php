@@ -18,21 +18,6 @@
     <div class="container cat">
         <div class="category-list-footer">
             <div class="footer-header">
-                <h2 class="footer-title"><i class="fa fa-music" aria-hidden="true"></i> Categor&iacute;as</h2>
-            </div>
-            <ul class="cat-list">
-                @php $categories = \App\Models\Category::where("display",1)->get(); @endphp
-                @foreach($categories as $category)
-                <li class="cat-li col-md-3 col-xs-6 col-sm-4"><a href="/{{$category->category_slug}}"
-                                                                 title="alarma ringtone collection"><i class="fa fa-bell-o" aria-hidden="true"></i> {{$category->category_name}}
-                        @php echo "(". \App\Models\Song::where("category_id", $category->id)->count(). ")"  @endphp</a> </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div class="container cat">
-        <div class="category-list-footer">
-            <div class="footer-header">
                 <h2 class="footer-title"><i class="fa fa-book" aria-hidden="true"></i> Blog </h2>
             </div>
             <ul class="cat-list">
