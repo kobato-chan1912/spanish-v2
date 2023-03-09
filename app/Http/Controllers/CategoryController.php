@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required',
-            'category_slug' => 'required'
+            'category_slug' => 'required|unique:categories'
         ]);
 
         $categoryName = $request->get("category_name");

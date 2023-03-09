@@ -163,7 +163,7 @@ body {
     white-space: nowrap;
     margin: 0;
     padding-left: 10px;
-    background: #ba38f2;
+    background: #fd0be112;
 }
 .box .cat_title{
     margin: 0;
@@ -586,7 +586,7 @@ body {
 .footer .about {
     line-height: 50px;
     text-align: center;
-    background-color: #ba38f2;
+    background-color: #fd0be112;
     font-family: fantasy;
     color: black;
 }
@@ -963,7 +963,7 @@ body {
     padding-bottom: 2px;
     margin-top: 5px;
     margin-bottom: 0px;
-    background: #ba38f2;
+    background: #fd0be112;
 }
 .footer-header{position:relative;}
 .footer-header::after{

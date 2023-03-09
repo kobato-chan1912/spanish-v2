@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="de">
 @php
     $title = \App\Models\Config::where("config_name", "home_title")->first()->config_value;
     $description = \App\Models\Config::where("config_name", "home_description")->first()->config_value;
@@ -14,15 +13,15 @@
 ])
 
 <body>
-@include("webpage.layouts.header")
+@include('webpage.layouts.header')
 <section class="body">
     <div class="banner">
         <div class="container">
-            @include("layouts.search_box")
+            @include('layouts.search_box')
             <br>
             <div style="clear:both;"></div>
-{{--            <span--}}
-{{--                style="display:block; text-align:center;border-bottom:1px solid #ededed;margin-bottom:5px;">Advertisement</span>--}}
+            {{-- <span --}}
+            {{-- style="display:block; text-align:center;border-bottom:1px solid #ededed;margin-bottom:5px;">Advertisement</span> --}}
 
             <!-- yo-h -->
             <div style="clear:both;"></div>
@@ -34,15 +33,16 @@
         <!-- <div class="container">-->
 
 
+
         <script>
-            $(document).ready(function () {
-                $("#btnViewMore").on("click", function (e) {
+            $(document).ready(function() {
+                $("#btnViewMore").on("click", function(e) {
                     e.preventDefault();
                     $(".page-description").toggleClass("summary");
-                    if ($(this).text() == "Lee mas") {
-                        $(this).text("Esconder");
+                    if ($(this).text() == "Mehr sehen") {
+                        $(this).text("Beitrag kürzen");
                     } else {
-                        $(this).text("Lee mas");
+                        $(this).text("Mehr sehen");
                     };
                 });
             });
@@ -60,9 +60,9 @@
             // });
         </script>
         <div class="col-md-7">
-            <div class="box column-1">
+            <div class="box column-3">
                 <a href="{{route("newest")}}">
-                    <h1 class="title"><i class="fa fa-music" aria-hidden="true"></i> Últimos tonos de llamada  </h1>
+                    <h1 class="title"><i class="fa fa-music" aria-hidden="true"></i> Neueste Klingeltöne  </h1>
                 </a>
 
 
@@ -150,16 +150,16 @@
                        href="{{ $url }}{{ $page }}">{{ $page }}</a>
                 @endif
             </div>
-            <div class="box column-1">
-                <a href="{{route("lost_mejores")}}">
-                    <h1 class="title"><i class="fa fa-music" aria-hidden="true"></i> TOP tonos de llamada  </h1>
+            <div class="box column-3">
+                <a href="{{route("lostMejores")}}">
+                    <h1 class="title"><i class="fa fa-music" aria-hidden="true"></i> Beste Klingeltöne  </h1>
                 </a>
 
                 <ul class="list_apps">
                     @php
                         $populars = \App\Models\Song::orderBy('downloads', 'desc')
                             ->where('display', 1)
-                            ->limit(5)
+                            ->limit(14)
                             ->get();
                     @endphp
                     @foreach ($populars as $song)
@@ -216,8 +216,8 @@
 
         <div class="col-md-5">
             <div class="box">
-                &nbsp; &nbsp;<a href="{{route("lost_mejores")}}" title="Tonos de llamada populares">
-                    <h2 class="title"><i class="fa fa-music" aria-hidden="true"></i>  Mejores tonos de llamada </h2>
+                &nbsp; &nbsp;<a href="{{route("popularSongs")}}" title="Tonos de llamada populares">
+                    <h2 class="title"><i class="fa fa-music" aria-hidden="true"></i>  Top Klingeltöne </h2>
                 </a>
                 <ul class="list_apps">
 
@@ -274,18 +274,15 @@
         <div class="col-md-5">
             <div class="box">
                 &nbsp; &nbsp;
-                <h2 class="title"><i class="fa fa-music" aria-hidden="true"></i> Categorías
+                <h2 class="title"><i class="fa fa-music" aria-hidden="true"></i> Kategorien
                 </h2>
 
                 <ul class="list_apps">
 
-                    @php $categories = \App\Models\Category::all(); @endphp
+
                     @foreach ($categories as $category)
-                        <li class="list-group-item col-md-6">
-                            <a href="/{{$category->category_slug}}"
-                                                                         title="alarma ringtone collection"><i class="fa fa-archive" aria-hidden="true"></i>
-                                {{$category->category_name}}
-                            </a>
+                        <li class="list-group-item">
+                            <a href="/{{ $category->category_slug }}">{{ $category->category_name }}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -295,10 +292,8 @@
 
 
 
-
-
-
-{{--            style="display:block; text-align:center;border-bottom:1px solid #ededed;margin-bottom:5px;">Advertisement</span>--}}
+        {{-- <span --}}
+        {{-- style="display:block; text-align:center;border-bottom:1px solid #ededed;margin-bottom:5px;">Advertisement</span> --}}
 
         <!-- yo-s -->
         <br>
@@ -307,15 +302,13 @@
                 <br>
                 <div id="container-cfq">
                     <div class="page-description summary">
-                        <h1 class="gt-title page-title"><i class="fa fa-bullhorn" aria-hidden="true">
-                                Descargar Tono
-                                de llamada 2022 mp3 gratis para tel&eacute;fonos
-                            </i></h1>
+                        <h1 class="gt-title page-title">Laden Sie Klingelton {{\Carbon\Carbon::now()->year}} mp3 kostenlos für Handys herunter.
+                        </h1>
                         <div class="entry-content">
                             @php echo $post @endphp
                         </div>
                         <div class="button">
-                            <button type="button" id="btnViewMore">Lee mas</button>
+                            <button type="button" id="btnViewMore">Mehr sehen</button>
                         </div>
                     </div>
                     &nbsp; &nbsp; &nbsp; &nbsp;
@@ -331,10 +324,13 @@
                 </div>
             </div>
         </div>
-
     </div>
 </section>
-@include("webpage.layouts.footer")
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+@include('webpage.layouts.footer')
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63e379abd69ec2ff"></script>
 
 </body>
 

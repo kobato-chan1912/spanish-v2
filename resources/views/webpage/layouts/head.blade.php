@@ -97,7 +97,7 @@
         }
 
         .page-description .button button {
-            background: #ba38f2;
+            background: #fd0be112;
             cursor: pointer;
             color: #fff;
             border: none;

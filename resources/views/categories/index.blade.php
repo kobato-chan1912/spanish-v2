@@ -216,6 +216,20 @@
 
     </script>
 @endif
+
+@error('category_slug')
+    <script>
+
+        swal({
+            icon: 'info',
+            title: 'Cảnh báo!',
+            text: 'Chuyên mục đang trùng. Vui lòng kiểm tra.',
+
+        })
+
+
+    </script>
+@enderror
 <script>
     function deleteCategory(ele){
         let id = (ele.data("id"));

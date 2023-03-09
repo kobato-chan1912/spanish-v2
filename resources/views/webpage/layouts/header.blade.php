@@ -13,7 +13,7 @@
                     <img src="/webpage/images/logo_v3.webp" alt="">
                 </a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse" style="background-color: {{'#'.env("BACKGROUND_COLOR")}}">
+            <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
                     <li id="menu-item-4479"
