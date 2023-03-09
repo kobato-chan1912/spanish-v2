@@ -228,7 +228,7 @@
                     createSlug();
 
                     // Auto Generate Title and Content
-                    let urlReq = "/api/random-song";
+                    let urlReq = "/admin/api/random-song";
                     $.ajax(urlReq,   // request url
                         {
                             success: function (data, status, xhr) {// success callback function
