@@ -62,7 +62,7 @@
         <div class="col-md-7">
             <div class="box column-1">
                 <a href="{{route("newest")}}">
-                    <h1 class="title"><i class="fa fa-music" aria-hidden="true"></i> Últimos tonos de llamada  </h1>
+                    <h2 class="title"><i class="fa fa-music" aria-hidden="true"></i> Últimos tonos de llamada  </h2>
                 </a>
 
 
@@ -152,7 +152,7 @@
             </div>
             <div class="box column-1">
                 <a href="{{route("lost_mejores")}}">
-                    <h1 class="title"><i class="fa fa-music" aria-hidden="true"></i> TOP tonos de llamada  </h1>
+                    <h2 class="title"><i class="fa fa-music" aria-hidden="true"></i> TOP tonos de llamada  </h2>
                 </a>
 
                 <ul class="list_apps">
@@ -307,13 +307,17 @@
                 <br>
                 <div id="container-cfq">
                     <div class="page-description summary">
-                        <h1 class="gt-title page-title"><i class="fa fa-bullhorn" aria-hidden="true">
-                                Descargar Tono
-                                de llamada 2022 mp3 gratis para tel&eacute;fonos
-                            </i></h1>
-                        <div class="entry-content">
-                            @php echo $post @endphp
+                        <div class="center" style="text-align: center">
+                            <h1 class="gt-title page-title"><i class="fa fa-bullhorn" aria-hidden="true">
+                                    Descargar Tono
+                                    de llamada 2022 mp3 gratis para tel&eacute;fonos
+                                </i></h1>
                         </div>
+                            <div class="entry-content">
+                                @php echo $post @endphp
+                            </div>
+
+
                         <div class="button">
                             <button type="button" id="btnViewMore">Lee mas</button>
                         </div>

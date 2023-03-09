@@ -58,7 +58,7 @@
             // });
         </script><div class="col-md-9">
             <div class="box column-3">
-                &nbsp; &nbsp;<h1 class="title"><i class="fa fa-music" aria-hidden="true"></i> {{$title}} </h1>
+                &nbsp; &nbsp;<h2 class="title"><i class="fa fa-music" aria-hidden="true"></i> {{$title}} </h2>
 
                 <ul class="list_apps">
 

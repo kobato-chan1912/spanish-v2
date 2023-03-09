@@ -62,7 +62,7 @@
         <div class="col-md-7">
             <div class="box column-3">
                 <a href="{{route("newest")}}">
-                    <h1 class="title"><i class="fa fa-music" aria-hidden="true"></i> Neueste Klingeltöne  </h1>
+                    <h2 class="title"><i class="fa fa-music" aria-hidden="true"></i> Neueste Klingeltöne  </h2>
                 </a>
 
 
