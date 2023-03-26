@@ -16,8 +16,14 @@
 <body>
 @include("webpage.layouts.header")
 <section class="body">
-    <div class="banner">
+    <div class="banner" style="height: 200px">
         <div class="container">
+            <div class="center" style="text-align: center">
+                <h1 class="gt-title page-title"><i class="fa fa-bullhorn" aria-hidden="true">
+                        Descargar Tono
+                        de llamada 2022 mp3 gratis para tel&eacute;fonos
+                    </i></h1>
+            </div>
             @include("layouts.search_box")
             <br>
             <div style="clear:both;"></div>
@@ -307,12 +313,7 @@
                 <br>
                 <div id="container-cfq">
                     <div class="page-description summary">
-                        <div class="center" style="text-align: center">
-                            <h1 class="gt-title page-title"><i class="fa fa-bullhorn" aria-hidden="true">
-                                    Descargar Tono
-                                    de llamada 2022 mp3 gratis para tel&eacute;fonos
-                                </i></h1>
-                        </div>
+
                             <div class="entry-content">
                                 @php echo $post @endphp
                             </div>
