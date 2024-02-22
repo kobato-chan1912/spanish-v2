@@ -18,10 +18,10 @@ class WebPageCategoryController extends Controller
         $this->url = "?page=";
     }
 
-    public function loadView($songs, $title, $ogTitle, $ogDes){
+    public function loadView($songs, $title, $ogTitle, $ogDes, $custom = null){
         return view("webpage.categories.index",
             ["songs" => $songs, "page" => $this->page, "url" => $this->url,
-                "og_title" => $ogTitle, "og_des" => $ogDes, "title" => $title]);
+                "og_title" => $ogTitle, "og_des" => $ogDes, "title" => $title, "custom" => $custom]);
     }
 
     public function newestSongs()
@@ -43,6 +43,24 @@ class WebPageCategoryController extends Controller
 
     public function categorySongs($slug){
         // Slug Solve //
+
+        if ($slug=="about-us")
+        {
+            $content = file_get_contents(storage_path("app/public/about_us.txt"));
+            return view("webpage.outside.index", ["content" => $content, "text" => "Tanıtmak - ". env("WEB_NAME")]);
+        }
+        if ($slug=="privacy-policy")
+        {
+            $content = file_get_contents(storage_path("app/public/privacy_policy.txt"));
+            return view("webpage.outside.index", ["content" => $content, "text" => "Kullanım Şartları - ". env("WEB_NAME")]);
+        }
+        if ($slug=="terms-of-use")
+        {
+            $content = file_get_contents(storage_path("app/public/terms_of_use.txt"));
+            return view("webpage.outside.index", ["content" => $content, "text" => "Gizlilik Politikası - ". env("WEB_NAME")]);
+        }
+
+
         $category = Category::where("category_slug", $slug)->where("display",1)->first();
         $song = Song::where("slug", $slug)->where("display",1)->first();
         $post = Post::where("slug", $slug)->where("display",1)->first();
@@ -50,23 +68,11 @@ class WebPageCategoryController extends Controller
         if ($category != null){ // has category
 
             $songs = Song::where("category_id", $category->id)->where("display", 1)->paginate(10);
-            $title = "Tonos de llmada " . $category->category_name;
-            $metaDes = "Tonos De Llamada $category->category_name – TonosMp3Gratis";
-            return $this->loadView($songs, $title, $category->meta_title, $metaDes);
+            $title = "Dzwonek $category->category_name";
+            $metaDes = "En iyi zil seslerinin koleksiyonu $category->category_name düzenli olarak güncellenmektedir. Cep telefonunuz için ücretsiz $category->category_name zil seslerini indirin.";
+            return $this->loadView($songs, $title, $category->meta_title, $category->meta_description, $category);
 
             // return view
-        } elseif ($song!= null){ // has Song
-
-            $similarSongs = Song::where("category_id", $song->category_id)
-                ->where("display", 1)
-                ->where("id", "!=", $song->id)
-                ->limit(12)->get();
-            $currentListener = $song->listeners;
-            Song::where("id", $song->id)->update(["listeners" => $currentListener+1]);
-            return view("webpage.song.index",
-                ["song" => $song, "adsScript" => $song->ad->script ,"similarSongs" => $similarSongs, "og_title" => $song->meta_title,
-                    "og_des" => $song->meta_description]);
-
         } elseif ($post != null){ // has Post
 
             return view("webpage.post.index", ["post" => $post]);
@@ -75,6 +81,23 @@ class WebPageCategoryController extends Controller
             abort("404");
         }
     }
+
+
+    public function showSongs($category, $song)
+    {
+        $category = Category::where("category_slug", $category)->where("display",1)->firstOrFail();
+        $song = Song::where("slug", $song)->where("display",1)->where("category_id", $category->id)->firstOrFail();
+        $similarSongs = Song::where("category_id", $song->category_id)
+            ->where("display", 1)
+            ->where("id", "!=", $song->id)
+            ->limit(12)->get();
+        $currentListener = $song->listeners;
+        Song::where("id", $song->id)->update(["listeners" => $currentListener+1]);
+        return view("webpage.song.index",
+            ["song" => $song, "similarSongs" => $similarSongs, "og_title" => $song->meta_title,
+                "og_des" => $song->meta_description]);
+    }
+
 
     public function losMejores(){
         $songs  = Song::orderBy("downloads", "desc")->where("display", 1)->paginate(10);

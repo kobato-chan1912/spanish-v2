@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::prefix("/admin")->group(function (){
+Route::prefix("/CDM")->group(function (){
     Route::get("/login", "AuthController@GetLogin")->name("login");
     Route::post("/login", "AuthController@Login");
     Route::get("/logout", "AuthController@logout")->name("logout");
@@ -29,7 +29,7 @@ Route::prefix("/admin")->group(function (){
 
 // Dashboard Route //
 
-Route::prefix("/admin")->middleware("auth")->group(function () {
+Route::prefix("/CDM")->middleware("auth")->group(function () {
 
 
     Route::get('/', "HomeController@index")->name("dashboard");
@@ -166,11 +166,13 @@ Route::prefix("/")->group(function (){
     Route::get("/los-mejores-tonos-de-llamada/", "WebPageCategoryController@losMejores")->name("lost_mejores");
    Route::get("/ultimos-tonos-de-llamada", "WebPageCategoryController@newestSongs")->name("newest");
    Route::get("/top-tonos-de-llamada", "WebPageCategoryController@popularSongs")->name("popularSongs");
-   Route::get("{slug}", "WebPageCategoryController@categorySongs")->name("categoriesSongs");
+    Route::get("/{category}/{song}", "WebPageCategoryController@showSongs");
+    Route::get("/{slug}", "WebPageCategoryController@categorySongs")->name("categoriesSongs");
 
 
    // Search Routes
 
+    Route::get("/{category}/{song}/download", "WebPageController@download");
     Route::get("/search/{search}", "WebPageCategoryController@search");
 
 

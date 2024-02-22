@@ -20,23 +20,23 @@
                     <li class="dropdown">
                         <a class="nav-link menu-title link-nav" href="{{route("dashboard")}}"><i data-feather="home"></i><span>Dashboard</span></a>
                     </li>
-                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/admin/categories"><i data-feather="folder"></i><span>Danh mục</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/CDM/categories"><i data-feather="folder"></i><span>Danh mục</span></a>
                     </li>
-                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/admin/songs"><i data-feather="music"></i><span>Nhạc</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/CDM/songs"><i data-feather="music"></i><span>Nhạc</span></a>
                     </li>
-                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/admin/ads"><i data-feather="tag"></i><span>Ads</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/CDM/ads"><i data-feather="tag"></i><span>Ads</span></a>
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="book-open"></i><span>Bài viết</span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="/admin/posts">Danh sách bài viết</a></li>
-                            <li><a href="/admin/post-outside">Bài viết trang chủ</a></li>
+                            <li><a href="/CDM/posts">Danh sách bài viết</a></li>
+                            <li><a href="/CDM/post-outside">Bài viết trang chủ</a></li>
                         </ul>
                     </li>
                     @if(\Illuminate\Support\Facades\Auth::user()->root == 1)
-                        <li class="dropdown"><a class="nav-link menu-title link-nav" href="/admin/users"><i data-feather="users"></i><span>Người dùng</span></a>
+                        <li class="dropdown"><a class="nav-link menu-title link-nav" href="/CDM/users"><i data-feather="users"></i><span>Người dùng</span></a>
                         </li>
                     @endif
-                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/admin/header"><i data-feather="code"></i><span>Thẻ Head</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/CDM/header"><i data-feather="code"></i><span>Thẻ Head</span></a>
                     </li>
                     <li class="sidebar-main-title">
                         <div>
@@ -45,20 +45,20 @@
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="edit-3"></i><span> Danh mục </span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="/admin/random-categories-title">Thẻ Description</a></li>
+                            <li><a href="/CDM/random-categories-title">Thẻ Description</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="edit-2"></i><span> Nhạc </span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="/admin/random-songs-title">Thẻ title</a></li>
-                            <li><a href="/admin/random-songs-description">Thẻ description</a></li>
+                            <li><a href="/CDM/random-songs-title">Thẻ title</a></li>
+                            <li><a href="/CDM/random-songs-description">Thẻ description</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link menu-title link-nav" href="javascript:void(0)" onclick="function supportAlert() {
                         swal('Liên hệ Zalo để được hỗ trợ', '0356186505', 'info')
                     }
                     supportAlert()"><i data-feather="headphones"></i><span>Hỗ trợ</span></a></li>
-                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/admin/configs"><i data-feather="settings"></i><span>Cài đặt chung</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title link-nav" href="/CDM/configs"><i data-feather="settings"></i><span>Cài đặt chung</span></a>
                     </li>
                 </ul>
             </div>

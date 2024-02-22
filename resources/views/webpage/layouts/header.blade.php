@@ -35,7 +35,7 @@
                     <li id="menu-item-4484"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4479 @if(URL::current() == env("WEBPAGE_URL"). "/descargar-tonos-de-iphone")) active @endif"><a
                             title="&Uacute;ltimos" href="{{env("WEBPAGE_URL"). "/whatsapp"}}"><span
-                                class="glyphicon &Uacute;ltimos tonos de llamada"></span>&nbsp;Tonos de llamada de whatsapp </a>
+                                class="glyphicon &Uacute;ltimos tonos de llamada"></span>whatsapp </a>
                     </li>
 {{--                    <li id="menu-item-4484"--}}
 {{--                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4479 @if(URL::current() == env("WEBPAGE_URL"). "/whatsapp")) active @endif"><a--}}

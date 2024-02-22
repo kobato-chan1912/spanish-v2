@@ -214,7 +214,7 @@
 
         $.ajax({
             type:'POST',
-            url:"/admin/api/check-song",
+            url:"/CDM/api/check-song",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -228,7 +228,7 @@
                     createSlug();
 
                     // Auto Generate Title and Content
-                    let urlReq = "/admin/api/random-song";
+                    let urlReq = "/CDM/api/random-song";
                     $.ajax(urlReq,   // request url
                         {
                             success: function (data, status, xhr) {// success callback function

@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required',
-            'category_slug' => 'required|unique:categories'
+            'category_slug' => 'required'
         ]);
 
         $categoryName = $request->get("category_name");
@@ -33,7 +33,7 @@ class CategoryController extends Controller
         $meta_title = $request->get("category_meta_title");
         $meta_des = $request->get("category_meta_description");
 
-        Category::create(['category_name' => $categoryName, "category_slug" => $categorySlug, "meta_title" => $meta_title, "meta_description" => $meta_des, "display" => $display]);
+        Category::create(['category_name' => $categoryName, "category_slug" => $categorySlug, "meta_title" => $meta_title, "meta_description" => $meta_des, "display" => $display, "content" => $request->get("content")]);
         return redirect()->back()->with(["message" => "Danh mục đã được thêm!"]);
     }
 
@@ -61,7 +61,7 @@ class CategoryController extends Controller
         $meta_title = $request->get("category_meta_title");
         $meta_des = $request->get("category_meta_description");
         $display = $request->get("display");
-        Category::where("id", $id)->update(['category_name' => $categoryName, "category_slug" => $categorySlug, "meta_title" => $meta_title, "meta_description" => $meta_des, "display" => $display]);
+        Category::where("id", $id)->update(['category_name' => $categoryName, "category_slug" => $categorySlug, "meta_title" => $meta_title, "meta_description" => $meta_des, "display" => $display, "content" => $request->get("content")]);
         return redirect()->back()->with(["message" => "Danh mục đã được cập nhật!"]);
     }
 }

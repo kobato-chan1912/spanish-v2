@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\Category;
 use App\Models\Song;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WebPageController extends Controller
@@ -26,17 +28,25 @@ class WebPageController extends Controller
         $bestSongs = Song::orderBy("downloads", "desc")->where("display",1)->limit(5)->get();
         $popularSongs = Song::orderBy("listeners", "desc")->where("display",1)->limit(5)->get();
         $adsScript = Ad::where("home_ads", 1)->first()->script;
+        $topWeekSongs = Song::orderBy("listeners", "desc")->where("display",1)
+            ->where('created_at', '>=', Carbon::today()->startOfWeek())->limit(6)->get();
+
+        $topMonthSongs = Song::orderBy("listeners", "desc")->where("display",1)
+            ->where('created_at', '>=', Carbon::today()->startOfMonth())->limit(6)->get();
+
+
+
         return view ("webpage.home.home",
-            compact('post', 'newestSongs', 'bestSongs', 'popularSongs', 'page', 'url', "adsScript"));
+            compact('post', 'newestSongs', 'bestSongs', 'popularSongs', 'page', 'url', "adsScript" , 'topMonthSongs', 'topWeekSongs'));
     }
 
-    public function download(Request $request, $id)
+    public function download(Request $request, $category, $song)
     {
-
-        $song = Song::where("id", $id)->first();
+        $category = Category::where("category_slug", $category)->where("display",1)->firstOrFail();
+        $song = Song::where("slug", $song)->where("display",1)->where("category_id", $category->id)->firstOrFail();
         if ($song != null){
             $currentDownload = $song->downloads;
-            Song::where("id", $id)->update(["downloads" => $currentDownload+1]);
+            $song->update(["downloads" => $currentDownload+1]);
 
             $similarSongs = Song::where("category_id", $song->category_id)
                 ->where("display", 1)

@@ -94,7 +94,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="/{{$song->slug}}" class="app_name" title="">{{$song->title}}</a>
+                            <a href="/{{$song->category->category_slug . "/". $song->slug}}" class="app_name" title="">{{$song->title}}</a>
                             <div class="starsx">
                                 <span><i class="fa fa-eye" aria-hidden="true"></i> {{$song->listeners}}</span>
                                 <span><i class="fa fa-download" aria-hidden="true"></i> {{$song->downloads}}</span>
@@ -136,6 +136,15 @@
                     <a class="page smaller" href="{{$url}}{{$page-1}}">{{$page-1}}</a>
                     <a class="page smaller current" href="{{$url}}{{$page}}">{{$page}}</a>
                     @endif
+
+                @if($custom !== null)
+                    @if($custom->content !== null)
+                        <div class="post_container" style="background-color: white; padding: 20px">
+                            {!! $custom->content !!}
+                        </div>
+                    @endif
+                @endif
+
             </div></div>
         <div class="col-md-3">
             @include("webpage.layouts.right_1")

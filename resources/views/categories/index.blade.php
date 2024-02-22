@@ -28,8 +28,8 @@
                                 <h3>Quản lý danh mục</h3>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route("dashboard")}}">Home</a></li>
-{{--                                    <li class="breadcrumb-item">Pages    </li>--}}
-{{--                                    <li class="breadcrumb-item">Ecommerce</li>--}}
+                                    {{--                                    <li class="breadcrumb-item">Pages    </li>--}}
+                                    {{--                                    <li class="breadcrumb-item">Ecommerce</li>--}}
                                     <li class="breadcrumb-item active">Danh sách danh mục</li>
                                 </ol>
                             </div>
@@ -77,9 +77,9 @@
                                                         <input class="form-control" type="text" id="category_slug" name="category_slug" required>
                                                     </div>
                                                     <div class="mb-3">
-                                                    <button class="btn btn-pill btn-danger" type="button" onclick="createSlug()">
-                                                        Tạo slug tự động
-                                                    </button>
+                                                        <button class="btn btn-pill btn-danger" type="button" onclick="createSlug()">
+                                                            Tạo slug tự động
+                                                        </button>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="col-form-label"
@@ -96,6 +96,13 @@
                                                             Tạo thẻ tự động
                                                         </button>
                                                     </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="col-form-label"
+                                                               for="content">Post chuyên mục:</label>
+                                                        <textarea class="form-control" name="content" id="content"></textarea>
+                                                    </div>
+
                                                     <div class="mb-3">
                                                         <label class="form-label" for="display">Hiển thị bên ngoài</label>
                                                         <select class="form-select digits" id="display" name="display">
@@ -134,37 +141,38 @@
                                             </thead>
                                             <tbody>
                                             @foreach($categories as $category)
-                                            <tr>
-                                                <td># {{$category->id}}</td>
-                                                <td>
-                                                    <div class="product-name"><a href="javscript:void(0)">
-                                                            <h6>{{$category->category_name}}</h6></a></div>
-                                                </td>
-                                                <td>{{$category->category_slug}}</td>
-                                                <td>
-                                                    @if ($category->display == 1)
-                                                    <i data-feather="check-circle" style="stroke: green"></i>
+                                                <tr>
+                                                    <td># {{$category->id}}</td>
+                                                    <td>
+                                                        <div class="product-name"><a href="javscript:void(0)">
+                                                                <h6>{{$category->category_name}}</h6></a></div>
+                                                    </td>
+                                                    <td>{{$category->category_slug}}</td>
+                                                    <td>
+                                                        @if ($category->display == 1)
+                                                            <i data-feather="check-circle" style="stroke: green"></i>
                                                         @else
-                                                        <i data-feather="x-circle"></i>
+                                                            <i data-feather="x-circle"></i>
                                                         @endif
-                                                </td>
-                                                <td>
-                                                    <a href="{{route("songsIndex"). "?category=$category->id"}} ">
-                                                        <i data-feather="align-justify"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#category_modal" data-whatever="@mdo"
-                                                       onclick="updateCategory($(this))" data-id="{{$category->id}}"
-                                                       data-name="{{$category->category_name}}" data-slug="{{$category->category_slug}}"
-                                                       data-display="{{$category->display}}" data-title="{{$category->meta_title}}" data-description = "{{$category->meta_description}}"><i
-                                                            data-feather="edit"></i></a>
-                                                    <a href="javascript:void(0)" data-id="{{$category->id}}"
-                                                       onclick="deleteCategory($(this))">
-                                                        <i data-feather="x-circle"></i>
-                                                    </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{route("songsIndex"). "?category=$category->id"}} ">
+                                                            <i data-feather="align-justify"></i>
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                           data-bs-target="#category_modal" data-whatever="@mdo"
+                                                           onclick="updateCategory($(this))" data-id="{{$category->id}}"
+                                                           data-name="{{$category->category_name}}" data-slug="{{$category->category_slug}}"
+                                                           data-display="{{$category->display}}" data-content="{{$category->content}}"
+                                                           data-title="{{$category->meta_title}}" data-description = "{{$category->meta_description}}"><i
+                                                                data-feather="edit"></i></a>
+                                                        <a href="javascript:void(0)" data-id="{{$category->id}}"
+                                                           onclick="deleteCategory($(this))">
+                                                            <i data-feather="x-circle"></i>
+                                                        </a>
 
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                             </tbody>
                                         </table>
@@ -203,6 +211,22 @@
 <script src="/assets/js/touchspin/touchspin.js"></script>
 <script src="/assets/js/touchspin/input-groups.min.js"></script>
 <script src="/assets/js/slug.js"></script>
+<script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+<script type="text/javascript" src="/js/ckfinder/ckfinder.js"></script>
+
+<script>
+    var ckcontent =  CKEDITOR.replace( 'content', {
+
+        filebrowserBrowseUrl     : "{{ route('ckfinder_browser') }}",
+        filebrowserImageBrowseUrl: "{{ route('ckfinder_browser') }}?type=Images&token=123",
+        filebrowserFlashBrowseUrl: "{{ route('ckfinder_browser') }}?type=Flash&token=123",
+        filebrowserUploadUrl     : "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Files",
+        filebrowserImageUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Images",
+        filebrowserFlashUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Flash",
+    } );
+
+
+</script>
 @if(session()->get("message"))
     <script>
 
@@ -216,20 +240,6 @@
 
     </script>
 @endif
-
-@error('category_slug')
-    <script>
-
-        swal({
-            icon: 'info',
-            title: 'Cảnh báo!',
-            text: 'Chuyên mục đang trùng. Vui lòng kiểm tra.',
-
-        })
-
-
-    </script>
-@enderror
 <script>
     function deleteCategory(ele){
         let id = (ele.data("id"));
@@ -301,6 +311,7 @@
         $("#category_meta_description").val(ele.data("description"));
         $("#category").attr("method", "post");
         $("#category").attr("action", '{{env("APP_URL")}}'+'/categories/' + ele.data('id'));
+        ckcontent.setData(ele.data("content"))
     }
 
 
@@ -314,6 +325,8 @@
             searching($(this).val());
         }
     });
+
+
 
 
 </script>

@@ -4,7 +4,7 @@
     <title>{{$title}}</title>
     <link rel="icon" href="/webpage/favicons/fav.ico">
     <meta property="og:locale" content="es">
-    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'/>
     <meta property="title" content="{{$og_title}}">
     <meta property="description" content="{{$og_des}}">
     <meta name="description" content="{{$og_des}}">
@@ -16,7 +16,7 @@
     <script src="/webpage/js/js-jqinit.js" async></script>
     <script>
         var jQInit = jQInit || [];
-        jQInit.push( [ 'myModule', function( $ ) {
+        jQInit.push(['myModule', function ($) {
             [
                 // '/webpage/js/jquery-1.9.1.min.js',
                 '/webpage/js/modernizr.min.js',
@@ -27,36 +27,39 @@
                 '/webpage/js/circle.player.js',
                 '/webpage/js/custom.js',
                 '/webpage/js/bootstrap.min.js',
-            ].forEach(function(src) {
+            ].forEach(function (src) {
                 var script = document.createElement('script');
                 script.src = src;
                 script.async = false;
                 document.head.appendChild(script);
             });
-        } ] );
+        }]);
     </script>
-
-
 
 
     <link rel="dns-prefetch" href="//s.w.org">
     <link rel="stylesheet" href="https://use.typekit.net/nii3adk.css">
-    <link rel="stylesheet" id="wp-block-library-css" href="/webpage/css/block-library-style.min.css" type="text/css" media="all">
-    <link rel="stylesheet" id="wp-pagenavi-css" href="/webpage/css/wp-pagenavi-pagenavi-css.css" type="text/css" media="all">
+    <link rel="stylesheet" id="wp-block-library-css" href="/webpage/css/block-library-style.min.css" type="text/css"
+          media="all">
+    <link rel="stylesheet" id="wp-pagenavi-css" href="/webpage/css/wp-pagenavi-pagenavi-css.css" type="text/css"
+          media="all">
     <link rel="stylesheet" id="main-style-css" href="/webpage/css/main-style.css" type="text/css" media="all">
     <link rel="stylesheet" id="bootstrap-css-css" href="/webpage/css/css-bootstrap.css" type="text/css" media="all">
-    <link rel="stylesheet" id="fontawesome-css-css" href="/webpage/css/css-font-awesome.min.css" type="text/css" media="all">
-    <link rel="stylesheet" id="style-css-css" href="/webpage/css/css-style.css" type="text/css" media="all">
-    <link rel="stylesheet" id="circle-player-style-css" href="/webpage/css/circle.skin-circle.player.css" type="text/css"
+    <link rel="stylesheet" id="fontawesome-css-css" href="/webpage/css/css-font-awesome.min.css" type="text/css"
           media="all">
-    <link rel="stylesheet" id="circle-monday-style-css" href="/webpage/css/css-jplayer.blue.monday.min.css" type="text/css"
+    <link rel="stylesheet" id="style-css-css" href="/webpage/css/css-style.css" type="text/css" media="all">
+    <link rel="stylesheet" id="circle-player-style-css" href="/webpage/css/circle.skin-circle.player.css"
+          type="text/css"
+          media="all">
+    <link rel="stylesheet" id="circle-monday-style-css" href="/webpage/css/css-jplayer.blue.monday.min.css"
+          type="text/css"
           media="all">
     <style type="text/css" id="wp-custom-css">
         .navbar-nav li a {
             color: #000000 !important;
         }
 
-        .navbar-default .navbar-nav>.active>a {
+        .navbar-default .navbar-nav > .active > a {
             background-color: #dfb1ee !important;
         }
 
@@ -68,6 +71,7 @@
             background-color: #dfb1ee !important;
             color: #fff;
         }
+
         .wp-pagenavi a {
             color: black;
         }
@@ -116,6 +120,7 @@
         .entry-contentp {
             line-height: 1.5;
             margin: 0 0 20px;
+
         .page-description .button button:hover {
             background: #ee493f;
         }
@@ -123,7 +128,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="revisit-after" content="1 days">
-    @if(isset($adsScript))@php echo $adsScript @endphp@endif
+    <link rel="canonical" href="{{Request::fullUrl()}}"/>
+
+    @if(isset($adsScript))
+        @php echo $adsScript @endphp
+    @endif
 
     @php
         $content = file_get_contents(storage_path("app/public/head.txt"));
