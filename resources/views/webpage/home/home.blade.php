@@ -329,7 +329,7 @@
                     @php
                         $populars = \App\Models\Song::orderBy('downloads', 'desc')
                             ->where('display', 1)
-                            ->limit(5)
+                            ->limit(10)
                             ->get();
                     @endphp
                     @foreach ($populars as $song)
