@@ -24,9 +24,9 @@ class WebPageController extends Controller
         $post = file_get_contents(storage_path("app/public/post_outside.txt"));
         $page = $this->page;
         $url = $this->url;
-        $newestSongs = Song::orderBy("id", "desc")->where("display",1)->paginate(5);
-        $bestSongs = Song::orderBy("downloads", "desc")->where("display",1)->limit(5)->get();
-        $popularSongs = Song::orderBy("listeners", "desc")->where("display",1)->limit(5)->get();
+        $newestSongs = Song::orderBy("id", "desc")->where("display",1)->paginate(10);
+        $bestSongs = Song::orderBy("downloads", "desc")->where("display",1)->limit(10)->get();
+        $popularSongs = Song::orderBy("listeners", "desc")->where("display",1)->limit(10)->get();
         $adsScript = Ad::where("home_ads", 1)->first()->script;
         $topWeekSongs = Song::orderBy("listeners", "desc")->where("display",1)
             ->where('created_at', '>=', Carbon::today()->startOfWeek())->limit(6)->get();
