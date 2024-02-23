@@ -55,6 +55,49 @@
           type="text/css"
           media="all">
     <style type="text/css" id="wp-custom-css">
+
+
+        .col-md-12{
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+
+        @media (max-width: 767px)
+        {
+            .container.b_margin{
+                padding-left: 1px;
+                padding-right: 1px;
+            }
+        }
+
+
+        .button-45 {
+            align-items: center;
+            background-color: #c27cf7;
+            background-position: 0 0;
+            border: 1px solid #c27cf7;
+            border-radius: 11px;
+            box-sizing: border-box;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 33.4929px;
+            list-style: outside url(https://www.smashingmagazine.com/images/bullet.svg) none;
+            padding: 2px 12px;
+            text-align: left;
+            text-decoration: none;
+            text-shadow: none;
+            text-underline-offset: 1px;
+            transition: border .2s ease-in-out,box-shadow .2s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            word-break: break-word;
+        }
+
         .navbar-nav li a {
             color: #000000 !important;
         }

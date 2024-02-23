@@ -380,6 +380,10 @@
                     @endforeach
 
                 </ul>
+
+                <a href="{{route("popularSongs")}}"><button class="button-45" style="margin: 0 auto; margin-top:10px; margin-bottom: 17px;" role="button">Ver más</button></a>
+
+
             </div>
 
         </div>
@@ -439,6 +443,10 @@
                         </li>
                     @endforeach
                 </ul>
+
+                <a href="{{route("lost_mejores")}}"><button class="button-45" style="margin: 0 auto; margin-top:10px; margin-bottom: 17px;" role="button">Ver más</button></a>
+
+
             </div>
         </div>
 
