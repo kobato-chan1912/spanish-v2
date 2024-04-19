@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::prefix("/CDM")->group(function (){
+Route::prefix("/CDM")->group(function () {
     Route::get("/login", "AuthController@GetLogin")->name("login");
     Route::post("/login", "AuthController@Login");
     Route::get("/logout", "AuthController@logout")->name("logout");
@@ -34,7 +34,7 @@ Route::prefix("/CDM")->middleware("auth")->group(function () {
 
     Route::get('/', "HomeController@index")->name("dashboard");
 
-    Route::prefix("/")->middleware("isRoot")->group(function (){
+    Route::prefix("/")->middleware("isRoot")->group(function () {
         Route::get("/users", "UserController@index")->name("usersIndex");
         Route::post("/users", "UserController@create");
         Route::delete("/users/{id}", "UserController@destroy");
@@ -142,7 +142,7 @@ Route::prefix("/admin")->middleware("auth")->group(function () {
 
     Route::get('/', "HomeController@index")->name("dashboard");
 
-    Route::prefix("/")->middleware("isRoot")->group(function (){
+    Route::prefix("/")->middleware("isRoot")->group(function () {
         Route::get("/users", "UserController@index")->name("usersIndex");
         Route::post("/users", "UserController@create");
         Route::delete("/users/{id}", "UserController@destroy");
@@ -267,26 +267,28 @@ Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderCon
 Route::get("/sitemap.xml", "SitemapController@index");
 Route::get("/post-sitemap.xml", "SitemapController@postSitemap");
 Route::get("/category-sitemap.xml", "SitemapController@categorySitemap");
-Route::prefix("/")->group(function (){
-   Route::get("/", "WebPageController@indexHome")->name("webPageIndex");
+Route::prefix("/")->group(function () {
+    Route::get("/", "WebPageController@indexHome")->name("webPageIndex");
+    Route::get("/dl/download", "WebPageController@dlDownload")->name("dlDownload");
+    Route::get("/search/{search}", "WebPageCategoryController@search");
+
+
 //   Route::get("/newest", "WebPageController@newest");
 
     Route::get("/los-mejores-tonos-de-llamada/", "WebPageCategoryController@losMejores")->name("lost_mejores");
-   Route::get("/ultimos-tonos-de-llamada", "WebPageCategoryController@newestSongs")->name("newest");
-   Route::get("/top-tonos-de-llamada", "WebPageCategoryController@popularSongs")->name("popularSongs");
-    Route::get("/{category}/{song}", "WebPageCategoryController@showSongs");
+    Route::get("/ultimos-tonos-de-llamada", "WebPageCategoryController@newestSongs")->name("newest");
+    Route::get("/top-tonos-de-llamada", "WebPageCategoryController@popularSongs")->name("popularSongs");
+    Route::get("/{category}/{song}", "WebPageCategoryController@showSongs")->name("songs.index");
     Route::get("/{slug}", "WebPageCategoryController@categorySongs")->name("categoriesSongs");
 
 
-   // Search Routes
+    // Search Routes
 
-    Route::get("/{category}/{song}/download", "WebPageController@download");
-    Route::get("/search/{search}", "WebPageCategoryController@search");
+    Route::get("/{category}/{song}/download", "WebPageController@download")->name("songs.downloads");
 
 
     // Download
 
     Route::get("/download/{id}", "WebPageController@download");
-    Route::get("/dl/download", "WebPageController@dlDownload")->name("dlDownload");
 
 });

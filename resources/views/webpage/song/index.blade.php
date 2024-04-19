@@ -168,7 +168,7 @@
 
 
 
-                                <a id="btnModalx" href="/{{$song->category->category_slug}}/{{$song->slug}}/download/" class="btn_download" rel="nofollow" title="Download">ŚCIĄGNIJ<i class="fa fa-download"></i></a>
+                                <a id="btnModalx" href="/{{$song->category->category_slug}}/{{$song->slug}}/download/" class="btn_download" rel="nofollow" title="Download">Descargar<i class="fa fa-download"></i></a>
 
                             </div>
                             <div class="text">

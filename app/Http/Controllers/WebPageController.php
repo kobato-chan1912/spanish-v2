@@ -27,7 +27,7 @@ class WebPageController extends Controller
         $newestSongs = Song::orderBy("id", "desc")->where("display",1)->paginate(10);
         $bestSongs = Song::orderBy("downloads", "desc")->where("display",1)->limit(10)->get();
         $popularSongs = Song::orderBy("listeners", "desc")->where("display",1)->limit(10)->get();
-        $adsScript = Ad::where("home_ads", 1)->first()->script;
+
         $topWeekSongs = Song::orderBy("listeners", "desc")->where("display",1)
             ->where('created_at', '>=', Carbon::today()->startOfWeek())->limit(6)->get();
 
@@ -37,7 +37,7 @@ class WebPageController extends Controller
 
 
         return view ("webpage.home.home",
-            compact('post', 'newestSongs', 'bestSongs', 'popularSongs', 'page', 'url', "adsScript" , 'topMonthSongs', 'topWeekSongs'));
+            compact('post', 'newestSongs', 'bestSongs', 'popularSongs', 'page', 'url' , 'topMonthSongs', 'topWeekSongs'));
     }
 
     public function download(Request $request, $category, $song)

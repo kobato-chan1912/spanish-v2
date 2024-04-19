@@ -173,14 +173,29 @@
     <meta name="revisit-after" content="1 days">
     <link rel="canonical" href="{{Request::fullUrl()}}"/>
 
-    @if(isset($adsScript))
-        @php echo $adsScript @endphp
+
+    @if(Route::current()->getName() !== "songs.index" && Route::current()->getName() !== "songs.downloads")
+            @php
+                $adsScript = \App\Models\Ad::where("home_ads", 1)->first()->script;
+            @endphp
+
+    @else
+        @php
+            $adsScript = $song->ad->script;
+        @endphp
+
     @endif
+
+
+    @php echo $adsScript @endphp
+
 
     @php
         $content = file_get_contents(storage_path("app/public/head.txt"));
         echo $content;
     @endphp
+
+
 
 
 </head>

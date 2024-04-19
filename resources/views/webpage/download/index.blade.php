@@ -243,7 +243,7 @@
 
                                 </div>
                                 <div class="post_qrcode">
-                                    <img src="https://chart.googleapis.com/chart?chs=130x130&amp;cht=qr&amp;chl={{env("WEBPAGE_URL").$song->url}}" title="qr code link" alt="scan qr code to download">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{env("WEBPAGE_URL").$song->url}}" title="qr code link" alt="scan qr code to download">
                                 </div>
                                 <!-- end bk -->
                             </div>
