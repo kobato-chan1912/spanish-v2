@@ -40,10 +40,9 @@ class WebPageController extends Controller
             compact('post', 'newestSongs', 'bestSongs', 'popularSongs', 'page', 'url' , 'topMonthSongs', 'topWeekSongs'));
     }
 
-    public function download(Request $request, $category, $song)
+    public function download($id)
     {
-        $category = Category::where("category_slug", $category)->where("display",1)->firstOrFail();
-        $song = Song::where("slug", $song)->where("display",1)->where("category_id", $category->id)->firstOrFail();
+        $song = Song::find($id);
         if ($song != null){
             $currentDownload = $song->downloads;
             $song->update(["downloads" => $currentDownload+1]);

@@ -168,7 +168,7 @@
 
 
 
-                                <a id="btnModalx" href="/{{$song->category->category_slug}}/{{$song->slug}}/download/" class="btn_download" rel="nofollow" title="Download">Descargar<i class="fa fa-download"></i></a>
+                                <a id="btnModalx" href="/download/{{$song->id}}" class="btn_download" rel="nofollow" title="Download">Descargar<i class="fa fa-download"></i></a>
 
                             </div>
                             <div class="text">
@@ -272,12 +272,12 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <a href="/{{$song->category->category_slug . "/". $song->slug}}" class="app_name" title="">{{$song->title}}</a>
+                                <a href="/{{$song->slug}}" class="app_name" title="">{{$song->title}}</a>
                                 <div class="starsx">
                                     <span><i class="fa fa-eye" aria-hidden="true"></i> {{$song->listeners}}</span>
                                     <span><i class="fa fa-download" aria-hidden="true"></i> {{$song->downloads}}</span>
                                     <span><i class="fa fa-file-audio-o" aria-hidden="true"></i> {{$song->size}}</span>
-                                    <a href="/{{$song->category->category_slug . "/". $song->slug}}" class="btn_download" rel="nofollow" title=""></a>
+                                    <a href="/{{$song->slug}}" class="btn_download" rel="nofollow" title=""></a>
                                 </div>
 {{--                                <div class="developer"><i class="fa fa-eye" aria-hidden="true"></i> {{$song->listeners}}</div>--}}
                             </li>

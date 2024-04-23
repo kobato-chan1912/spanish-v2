@@ -278,13 +278,10 @@ Route::prefix("/")->group(function () {
     Route::get("/los-mejores-tonos-de-llamada/", "WebPageCategoryController@losMejores")->name("lost_mejores");
     Route::get("/ultimos-tonos-de-llamada", "WebPageCategoryController@newestSongs")->name("newest");
     Route::get("/top-tonos-de-llamada", "WebPageCategoryController@popularSongs")->name("popularSongs");
-    Route::get("/{category}/{song}", "WebPageCategoryController@showSongs")->name("songs.index");
+//    Route::get("/{category}/{song}", "WebPageCategoryController@showSongs")->name("songs.index");
     Route::get("/{slug}", "WebPageCategoryController@categorySongs")->name("categoriesSongs");
 
 
-    // Search Routes
-
-    Route::get("/{category}/{song}/download", "WebPageController@download")->name("songs.downloads");
 
 
     // Download

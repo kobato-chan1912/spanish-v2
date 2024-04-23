@@ -94,7 +94,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="/{{$song->category->category_slug . "/". $song->slug}}" class="app_name" title="">{{$song->title}}</a>
+                            <a href="/{{$song->slug}}" class="app_name" title="">{{$song->title}}</a>
                             <div class="starsx">
                                 <span><i class="fa fa-eye" aria-hidden="true"></i> {{$song->listeners}}</span>
                                 <span><i class="fa fa-download" aria-hidden="true"></i> {{$song->downloads}}</span>

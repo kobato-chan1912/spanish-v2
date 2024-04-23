@@ -68,12 +68,24 @@ class WebPageCategoryController extends Controller
         if ($category != null){ // has category
 
             $songs = Song::where("category_id", $category->id)->where("display", 1)->paginate(10);
-            $title = "Dzwonek $category->category_name";
-            $metaDes = "En iyi zil seslerinin koleksiyonu $category->category_name düzenli olarak güncellenmektedir. Cep telefonunuz için ücretsiz $category->category_name zil seslerini indirin.";
+            $title = "Descargar $category->category_name";
+            $metaDes = $category->meta_title;
             return $this->loadView($songs, $title, $category->meta_title, $category->meta_description, $category);
 
             // return view
-        } elseif ($post != null){ // has Post
+        } elseif ($song!= null){ // has Song
+
+            $similarSongs = Song::where("category_id", $song->category_id)
+                ->where("display", 1)
+                ->where("id", "!=", $song->id)
+                ->limit(12)->get();
+            $currentListener = $song->listeners;
+            Song::where("id", $song->id)->update(["listeners" => $currentListener+1]);
+            return view("webpage.song.index",
+                ["song" => $song, "similarSongs" => $similarSongs, "og_title" => $song->meta_title,
+                    "og_des" => $song->meta_description]);
+
+        }  elseif ($post != null){ // has Post
 
             return view("webpage.post.index", ["post" => $post]);
         }
